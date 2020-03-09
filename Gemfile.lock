@@ -1,0 +1,28 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bson (4.8.2)
+    mongo (2.11.4)
+      bson (>= 4.4.2, < 5.0.0)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
+    rack (2.2.2)
+    rack-protection (2.0.8.1)
+      rack
+    ruby2_keywords (0.0.2)
+    sinatra (2.0.8.1)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.8.1)
+      tilt (~> 2.0)
+    tilt (2.0.10)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  mongo!
+  sinatra!
+
+BUNDLED WITH
+   1.17.2

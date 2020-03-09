@@ -2,6 +2,7 @@
 require "sinatra"
 require "mongo"
 require "json"
+require "thin"
 
 mongo_url = ENV["mongo_url"]
 database = ENV["db"]
@@ -9,6 +10,7 @@ collection = ENV["collection"]
 set(:environment, :production)
 set(:bind, "0.0.0.0")
 set(:port, 8081)
+set(:server, "thin")
 
 class Zubat
   def initialize(conn_str, database, collection_str)

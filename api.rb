@@ -11,6 +11,8 @@ set(:environment, :production)
 set(:bind, "0.0.0.0")
 set(:port, 8081)
 set(:server, "puma")
+set(:logging, false)
+set(:dump_errors, false)
 
 class Zubat
   def initialize(conn_str, database, collection_str)

@@ -1,19 +1,3 @@
-#!/usr/bin/env ruby
-require "sinatra"
-require "mongo"
-require "json"
-require "puma"
-
-mongo_url = ENV["mongo_url"]
-database = ENV["db"]
-collection = ENV["collection"]
-set(:environment, :production)
-set(:bind, "0.0.0.0")
-set(:port, 8081)
-set(:server, "puma")
-set(:logging, false)
-set(:dump_errors, false)
-
 class Zubat
   def initialize(conn_str, database, collection_str)
     @client = Mongo::Client.new([conn_str],     :database => database)
@@ -53,19 +37,3 @@ class Zubat
     return domain_indexes
   end
 end
-
-zubat = Zubat.new(mongo_url, database, collection)
-
-get("/domains/") do
-  return JSON.pretty_generate(zubat.get_domain_indexes)
-end
-
-get("/domains/:domain") do
-  return JSON.pretty_generate(zubat.get_domain_data(params[:domain]))
-end
-
-get("/domains/:domain/subdomains") do
-  return JSON.pretty_generate(zubat.get_subdomains(params[:domain]))
-end
-
-run(Sinatra::Application.run!)
